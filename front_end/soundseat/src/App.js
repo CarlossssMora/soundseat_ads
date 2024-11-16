@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import './stylesheets/App.css';
+import Nav from './componentes/nav';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
     // Para utilizarlo, se mete el componente dentro de div
     // <Componente />
     <div className="App">
-      
+      <Nav/>
     </div>
   );
 }

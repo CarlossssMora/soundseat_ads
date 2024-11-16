@@ -1,0 +1,60 @@
+/* Contenedor principal de la navegación */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0056d2; /* Fondo azul */
+    padding: 20px 20px; /* Incrementa el padding para extender la altura */
+    color: white;
+    height: 150px; /* Ajusta el alto fijo del nav si es necesario */
+}
+
+/* Logo */
+.nav-logo img {
+    height:250px; /* Incrementa el tamaño del logo */
+    display: block;
+}
+
+/* Contenedor principal de la barra de búsqueda */
+.nav-search {
+    display: flex;
+    align-items: center;
+    background-color: white; /* Fondo blanco para todo el contenedor */
+    border-radius: 5px; /* Bordes redondeados */
+    overflow: hidden;
+    border: 1px solid #ddd; /* Borde tenue alrededor */
+    width: 800px; /* Ajusta el ancho según sea necesario */
+    margin: 5 auto; /* Centra la barra de búsqueda horizontalmente */
+}
+
+/* Campo de fecha y línea divisoria */
+.nav-datepicker {
+    border: none; /* Sin borde */
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    outline: none;
+    cursor: pointer;
+    border-right: 1px solid #e0e0e0; /* Línea divisoria gris tenue */
+}
+
+/* Campo de texto de búsqueda */
+.nav-input {
+    border: none; /* Sin borde */
+    padding: 10px;
+    flex: 1; /* Hace que ocupe el espacio restante */
+    font-size: 14px;
+    outline: none;
+}
+
+/* Botón de búsqueda */
+.nav-search-btn {
+    background-color: #0056d2; /* Azul para el botón */
+    border: none;
+    color: white;
+    padding: 10px 15px; /* Tamaño del botón */
+    cursor: pointer;
+    font-size: 14px; /* Tamaño del texto */
+    font-weight: bold; /* Texto destacado */
+    border-left: 1px solid #e0e0e0; /* Línea divisoria gris tenue */
+}
