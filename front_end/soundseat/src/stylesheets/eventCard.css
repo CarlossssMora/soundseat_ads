@@ -1,0 +1,100 @@
+/* Contenedor principal de la tarjeta */
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    width: calc(50% - 40px); /* Dos eventos por fila */
+}
+
+/* Imagen del evento */
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Detalles del evento */
+.event-details {
+    padding: 15px;
+}
+
+.event-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.event-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.event-date,
+.event-time {
+    font-size: 14px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.event-date i,
+.event-time i {
+    margin-right: 8px;
+}
+
+/* Contenedor de botones */
+.event-buttons {
+    display: flex;
+    align-items: center; /* Alineación vertical central */
+    justify-content: flex-start; /* Opcional: controla la posición horizontal */
+    margin-top: 10px;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+/* Botón de acción */
+.event-button {
+    background-color: #0056d2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Asegura que el contenido del botón también esté centrado */
+    justify-content: center;
+}
+
+.event-button:hover {
+    background-color: #0041a8;
+}
+
+/* Botón de like */
+.like-button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Asegura que el contenido del botón también esté centrado */
+    justify-content: center;
+}
+
+.like-button:hover {
+    background-color: #e84141;
+}
+
+/* Contador de likes */
+.like-count {
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px; /* Opcional: ajusta el espacio entre el botón y el texto */
+}

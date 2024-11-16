@@ -1,0 +1,21 @@
+/* Contenedor principal de la sección de próximos eventos */
+.upcoming-events {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #0056d2;
+    margin-bottom: 20px;
+    text-align: left; /* Cambia la alineación a la izquierda */
+    margin-left: 20px; /* Agrega espacio desde la izquierda si es necesario */
+}
+
+
+  /* Grid para organizar las tarjetas */
+.events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

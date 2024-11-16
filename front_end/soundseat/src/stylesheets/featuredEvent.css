@@ -1,0 +1,60 @@
+/* Contenedor principal del evento destacado */
+.featured-event {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajusta la altura según sea necesario */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    padding: 20px;
+    box-shadow: inset 0 -50px 100px rgba(0, 0, 0, 0.6); /* Sombra en la parte inferior */
+}
+
+  /* Detalles del evento */
+.featured-event-details {
+    max-width: 500px;
+}
+
+.event-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.event-description {
+    font-size: 18px;
+    margin: 10px 0;
+    color: white;
+}
+
+.event-date,
+.event-time {
+    font-size: 16px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.event-date i,
+.event-time i {
+    margin-right: 8px;
+}
+
+  /* Botón de acción */
+.event-button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #0056d2;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.event-button:hover {
+    background-color: #0041a8;
+}

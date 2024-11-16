@@ -9,7 +9,7 @@ function Footer() {
         <div className="footer-section">
           <h3>Más Información de la compañía</h3>
           <p>
-            SOUNDSEAT se dedica a la venta de boletos para eventos de música, teatro, y más. Esta plataforma está diseñada para que encuentres todo en un solo lugar.
+            SOUNDSEAT se dedica a la venta de boletos para eventos de música. Esta plataforma está diseñada para que encuentres todo en un solo lugar.
           </p>
         </div>
 
