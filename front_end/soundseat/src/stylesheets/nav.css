@@ -16,6 +16,7 @@
 }
 
 /* Contenedor principal de la barra de búsqueda */
+/* Contenedor principal de la barra de búsqueda */
 .nav-search {
     display: flex;
     align-items: center;
@@ -23,16 +24,19 @@
     border-radius: 5px; /* Bordes redondeados */
     overflow: hidden;
     border: 1px solid #ddd; /* Borde tenue alrededor */
-    width: 800px; /* Ajusta el ancho según sea necesario */
-    margin: 5 auto; /* Centra la barra de búsqueda horizontalmente */
+    width: 1000px; /* Ajusta el ancho según sea necesario */
+    margin:  auto; /* Centra la barra de búsqueda horizontalmente */
+    padding: 15px; /* Incrementa el padding para hacerlo más alto */
+    height: 60px; /* O utiliza una altura fija si prefieres un control estricto */
+    box-sizing: border-box; /* Asegura que padding no afecte el tamaño */
 }
 
 /* Campo de fecha y línea divisoria */
 .nav-datepicker {
     border: none; /* Sin borde */
-    padding: 10px;
-    font-size: 14px;
-    width: 150px;
+    padding: 15px;
+    font-size: 16px;
+    width: 200px;
     outline: none;
     cursor: pointer;
     border-right: 1px solid #e0e0e0; /* Línea divisoria gris tenue */
@@ -41,9 +45,9 @@
 /* Campo de texto de búsqueda */
 .nav-input {
     border: none; /* Sin borde */
-    padding: 10px;
+    padding: 15px;
     flex: 1; /* Hace que ocupe el espacio restante */
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
 }
 
@@ -52,9 +56,9 @@
     background-color: #0056d2; /* Azul para el botón */
     border: none;
     color: white;
-    padding: 10px 15px; /* Tamaño del botón */
+    padding: 15px 20px; /* Tamaño del botón */
     cursor: pointer;
-    font-size: 14px; /* Tamaño del texto */
+    font-size: 16px; /* Tamaño del texto */
     font-weight: bold; /* Texto destacado */
     border-left: 1px solid #e0e0e0; /* Línea divisoria gris tenue */
 }

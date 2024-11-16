@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../stylesheets/nav.css';
+import '../stylesheets/datepicker.css';
+
 
 function Nav() {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -20,9 +22,11 @@ function Nav() {
                 <DatePicker
                 selected={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
+                minDate={new Date()}//no permite fechas anteriores
                 placeholderText="Selecciona una fecha"
                 dateFormat="dd/MM/yyyy"
                 className="nav-datepicker"
+                calendarClassName="custom-calendar"
                 />
             </div>
 

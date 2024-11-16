@@ -1,0 +1,57 @@
+/* datepicker.css */
+.custom-calendar {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-calendar .react-datepicker__day {
+    font-size: 14px;
+    color: #333;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.custom-calendar .react-datepicker__day--selected {
+    background-color: #0056d2;
+    color: white;
+    font-weight: bold;
+}
+
+.custom-calendar .react-datepicker__day:hover {
+    background-color: #dce6f2;
+    color: #0056d2;
+}
+
+.custom-calendar .react-datepicker__current-month {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0056d2;
+}
+
+.custom-calendar .react-datepicker__navigation {
+    border: none;
+    background-color: transparent;
+}
+
+.custom-calendar .react-datepicker__navigation--previous {
+    border-right-color: #0056d2;
+}
+
+.custom-calendar .react-datepicker__navigation--next {
+    border-left-color: #0056d2;
+}
+
+/* Días deshabilitados */
+.custom-calendar .react-datepicker__day--disabled {
+    color: rgba(0, 0, 0, 0.3); /* Gris desvanecido */
+    cursor: not-allowed; /* Cursor para indicar que está deshabilitado */
+}
+
+  /* Día deshabilitado al que se pasa el mouse */
+.custom-calendar .react-datepicker__day--disabled:hover {
+    background-color: transparent; /* Sin fondo al pasar el mouse */
+    color: rgba(0, 0, 0, 0.3); /* Mantén el gris desvanecido */
+}
+
