@@ -1,0 +1,84 @@
+/* Contenedor principal del footer */
+.footer {
+    background-color:#0A0F29; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-sections {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Asegura que sea responsivo */
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px; /* Ancho mínimo para secciones pequeñas */
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+  /* Redes sociales */
+.social-links {
+    list-style: none;
+    padding: 0;
+}
+
+.social-links li {
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.social-links a:hover {
+    color: #ddd; /* Color más claro al pasar el mouse */
+}
+
+  /* Información de contacto */
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.contact-info i {
+    margin-right: 8px;
+}
+
+  /* Barra inferior */
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}

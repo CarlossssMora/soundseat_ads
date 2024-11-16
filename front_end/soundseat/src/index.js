@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './stylesheets/index.css';
+import './stylesheets/index.css'; // Si tienes un archivo global de estilos
 import App from './App';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-//Renderiza los componentes para ponerlos en el index.html
-// Especificamente, en el div con id = "root"
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,2 +1,14 @@
 /*Aquí metemos el código CSS para darle estilos a la página de manera general*/
 /*Estos estilos se aplican en App.js */
+
+/* Contenedor principal de la aplicación */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima igual a la ventana */
+}
+
+/* El contenido principal ocupará el espacio disponible */
+.main-content {
+  flex: 1; /* Ocupa todo el espacio vertical disponible */
+}
