@@ -1,14 +1,24 @@
-/*Aquí metemos el código CSS para darle estilos a la página de manera general*/
-/*Estos estilos se aplican en App.js */
-
 /* Contenedor principal de la aplicación */
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Altura mínima igual a la ventana */
+  overflow-x: hidden; /* Oculta el scroll horizontal */
 }
 
 /* El contenido principal ocupará el espacio disponible */
 .main-content {
   flex: 1; /* Ocupa todo el espacio vertical disponible */
+  width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  box-sizing: border-box; /* Incluye padding y bordes dentro del ancho */
+  overflow-x: hidden; /* Asegura que no haya scroll horizontal en este contenedor */
+}
+
+/* General para todo el cuerpo */
+body {
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina rellenos por defecto */
+  width: 100%; /* Asegura que el ancho del cuerpo sea el de la ventana */
+  overflow-x: hidden; /* Oculta cualquier scroll horizontal */
+  box-sizing: border-box; /* Incluye bordes y rellenos en el cálculo del tamaño */
 }

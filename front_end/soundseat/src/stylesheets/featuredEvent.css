@@ -32,7 +32,7 @@
   .event-description {
     font-size: 18px;
     margin: 10px 0;
-    color: white;
+    color: white !important; 
   }
   
   .event-date,
