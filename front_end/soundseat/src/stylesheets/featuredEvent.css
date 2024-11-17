@@ -29,10 +29,10 @@
     margin: 0;
   }
   
-  .event-description {
+  .featured-event-description {
     font-size: 18px;
     margin: 10px 0;
-    color: white !important; 
+    color: white ; 
   }
   
   .event-date,

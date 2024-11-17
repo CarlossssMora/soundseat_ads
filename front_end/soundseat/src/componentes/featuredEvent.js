@@ -31,7 +31,7 @@ function FeaturedEvent({ events }) {
             >
               <div className="featured-event-details">
                 <h1 className="event-title">{event.title}</h1>
-                <p className="event-description">{event.description}</p>
+                <p className="featured-event-description">{event.description}</p>
                 <p className="event-date">
                   <i className="fas fa-calendar-alt"></i> {event.date}
                 </p>
