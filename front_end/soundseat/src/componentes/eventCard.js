@@ -22,7 +22,7 @@ function EventCard({ event }) {
                 </p>
                 {/* Sección de botones en una misma fila */}
                 <div className="event-buttons">
-                    <button className="event-button">Ver Detalles</button>
+                    <button className="event-button-card">Ver Detalles</button>
                     <button className="like-button" onClick={handleLike}>
                         ❤️ Like
                     </button>

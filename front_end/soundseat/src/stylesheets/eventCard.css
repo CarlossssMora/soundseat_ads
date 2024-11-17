@@ -57,8 +57,9 @@
 }
 
 /* Botón de acción */
-.event-button {
+.event-button-card {
     background-color: #0056d2;
+    margin-top: 0px;
     color: white;
     border: none;
     padding: 10px 15px;
