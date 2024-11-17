@@ -49,7 +49,7 @@ function FeaturedEvent({ events }) {
                   className="event-button"
                   onClick={() => goToDetails(event.id)}
                 >
-                  Ver Boletos
+                  Ver Detalles
                 </button>
               </div>
             </div>
