@@ -59,7 +59,7 @@ function EventDetails({ events }) {
 
                 <div className="event-details-divider"></div>
 
-                <h3>Descripción larga</h3>
+                <h3>Descripción</h3>
                 <p className="event-details-long-description">{event.longDescription}</p>
 
                 <div className="event-details-divider"></div>
