@@ -33,12 +33,11 @@ function EventDetails({ events }) {
                 {/* Detalles del evento */}
                 <h2>Detalles del evento</h2>
                 <div className="event-details-info">
-                    {/* Sección del artista con ícono */}
                     <div className="event-detail">
-                        <i className="fas fa-user"></i> {/* Ícono de usuario */}
+                        <i className="fas fa-user"></i>
                         <div className="event-detail-content">
                             <span>Artista:</span>
-                            <span>{event.artist}</span> {/* Nombre del artista */}
+                            <span>{event.artist}</span>
                         </div>
                     </div>
                     <div className="event-detail">
