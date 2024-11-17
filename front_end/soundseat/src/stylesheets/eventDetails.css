@@ -1,0 +1,167 @@
+.event-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event-details-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-details-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -20px;
+}
+
+.event-details-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.event-details-description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.event-details-info {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.event-detail i {
+    font-size: 24px;
+    color: #0056d2;
+    margin-right: 10px;
+}
+
+.event-detail-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-detail-content span:first-child {
+    font-weight: bold;
+}
+
+.event-details-divider {
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.event-details-long-description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.event-details-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-to-home {
+    background-color: transparent;
+    color: #0056d2;
+    border: 2px solid #0056d2;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-to-home:hover {
+    background-color: #0056d2;
+    color: white;
+}
+
+.buy-ticket {
+    background-color: #0056d2;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.buy-ticket:hover {
+    background-color: #0041a8;
+}
+
+/* Nueva sección para Redes Sociales */
+.event-details-socials {
+    margin-top: 20px;
+}
+
+.socials-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around; /* Alinea las redes sociales de manera uniforme */
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el ícono y el texto */
+    color: #0056d2; /* Color azul */
+    text-decoration: none; /* Elimina subrayado */
+}
+
+.social-item:hover {
+    color: #0056d2; /* Color azul sin cambio en el hover */
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #0056d2; /* Color azul */
+}
+
+.social-item span {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Eliminar animaciones */
+.social-icon, .social-item {
+    transition: none; /* Quitar animaciones */
+}
+
+/* Estilo específico para el nombre del artista con ícono */
+.event-artist {
+    display: flex;
+    align-items: center;
+    font-size: 20px; /* Tamaño de la fuente del nombre del artista */
+    color: #333;
+    margin-top: 10px;
+}
+
+.event-artist i {
+    font-size: 24px; /* Tamaño del ícono */
+    margin-right: 10px; /* Espacio entre el ícono y el nombre */
+    color: #0056d2; /* Color del ícono */
+}

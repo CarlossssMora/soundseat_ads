@@ -15,6 +15,11 @@ function FeaturedEvent({ events }) {
     autoplaySpeed: 3000,
   };
 
+  const goToDetails = (id) => {
+    // Redirigir dinámicamente a la página de detalles usando el ID del evento
+    window.location.href = `/event/${id}`;
+  };
+
   return (
     <div className="featured-event-container">
       <Slider {...settings}>
@@ -31,6 +36,7 @@ function FeaturedEvent({ events }) {
             >
               <div className="featured-event-details">
                 <h1 className="event-title">{event.title}</h1>
+                <p className="event-artist-featured">{event.artist}</p> {/* Nombre del artista con la clase 'event-artist' */}
                 <p className="featured-event-description">{event.description}</p>
                 <p className="event-date">
                   <i className="fas fa-calendar-alt"></i> {event.date}
@@ -38,7 +44,13 @@ function FeaturedEvent({ events }) {
                 <p className="event-time">
                   <i className="fas fa-clock"></i> {event.time}
                 </p>
-                <a href="#details" className="event-button">Ver Boletos</a>
+                {/* Botón para redirigir a los detalles */}
+                <button
+                  className="event-button"
+                  onClick={() => goToDetails(event.id)}
+                >
+                  Ver Boletos
+                </button>
               </div>
             </div>
           </div>

@@ -35,7 +35,8 @@
 }
 
 .event-date,
-.event-time {
+.event-time,
+.event-artist-card {
     font-size: 14px;
     margin: 5px 0;
     display: flex;
@@ -43,7 +44,8 @@
 }
 
 .event-date i,
-.event-time i {
+.event-time i,
+.event-artist-card i {
     margin-right: 8px;
 }
 
@@ -58,6 +60,8 @@
 
 /* Botón de acción */
 .event-button-card {
+    text-decoration: none;
+    font-weight: bold;
     background-color: #0056d2;
     margin-top: 0px;
     color: white;
