@@ -3,8 +3,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../stylesheets/featuredEvent.css';
+import EventCard from './eventCard'; // Importar EventCard
 
-function FeaturedEvent({ events }) {
+function FeaturedEvent({ events, isSearchMode = false }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -20,6 +21,18 @@ function FeaturedEvent({ events }) {
     window.location.href = `/event/${id}`;
   };
 
+  if (isSearchMode) {
+    // Modo de búsqueda: Renderizar eventos destacados como tarjetas
+    return (
+      <div className="featured-event-search">
+        {events.map((event) => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+    );
+  }
+
+  // Vista principal: Slider de eventos destacados
   return (
     <div className="featured-event-container">
       <Slider {...settings}>
@@ -36,7 +49,7 @@ function FeaturedEvent({ events }) {
             >
               <div className="featured-event-details">
                 <h1 className="event-title">{event.title}</h1>
-                <p className="event-artist-featured">{event.artist}</p> {/* Nombre del artista con la clase 'event-artist' */}
+                <p className="event-artist-featured">{event.artist}</p> {/* Nombre del artista */}
                 <p className="featured-event-description">{event.description}</p>
                 <p className="event-date">
                   <i className="fas fa-calendar-alt"></i> {event.date}
@@ -44,7 +57,6 @@ function FeaturedEvent({ events }) {
                 <p className="event-time">
                   <i className="fas fa-clock"></i> {event.time}
                 </p>
-                {/* Botón para redirigir a los detalles */}
                 <button
                   className="event-button"
                   onClick={() => goToDetails(event.id)}

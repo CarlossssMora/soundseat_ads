@@ -2,15 +2,16 @@ import React from 'react';
 import EventCard from './eventCard';
 import '../stylesheets/upcomingEvents.css';
 
-function UpcomingEvents({ events }) {
+function UpcomingEvents({ events, isSearchMode = false }) {
     return (
         <div className="upcoming-events">
-        <h2 className="section-title">Próximos Eventos</h2>
-        <div className="events-grid">
-            {events.map((event) => (
-            <EventCard key={event.id} event={event} />
-            ))}
-        </div>
+            {/* Renderizar el título solo si no está en modo de búsqueda */}
+            {!isSearchMode && <h2 className="section-title">Próximos Eventos</h2>}
+            <div className="events-grid">
+                {events.map((event) => (
+                    <EventCard key={event.id} event={event} />
+                ))}
+            </div>
         </div>
     );
 }
