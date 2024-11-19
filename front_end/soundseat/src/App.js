@@ -6,7 +6,8 @@ import Footer from './componentes/footer';
 import FeaturedEvent from './componentes/featuredEvent';
 import UpcomingEvents from './componentes/upcomingEvents';
 import EventDetails from './componentes/eventDetails';
-import BuyTickets from './componentes/buyTickets';
+import SeatSelection from './componentes/seatSelection';
+import PurchaseTickets from './componentes/purchaseTickets';
 
 // EVENTOS DESTACADOS Y PRÓXIMOS (Mock Data)
 const mockFeaturedEvents = [
@@ -24,6 +25,85 @@ const mockFeaturedEvents = [
       { icon: 'twitter', url: 'https://x.com/marranooficial?lang=es' },
       { icon: 'instagram', url: 'https://www.instagram.com/gpomarrano?igsh=a2VlbWo5bW5jaGw=' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 2,
@@ -39,6 +119,85 @@ const mockFeaturedEvents = [
       { icon: 'twitter', url: 'https://x.com/IamSiddhartha' },
       { icon: 'instagram', url: 'https://www.instagram.com/iamsiddhartha?igsh=MXAwYXB2MDZmaXpydg==' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 3,
@@ -53,6 +212,85 @@ const mockFeaturedEvents = [
       { icon: 'twitter', url: 'https://x.com/KygoMusic' },
       { icon: 'instagram', url: 'https://www.instagram.com/kygomusic?igsh=czlyMXZ3b2I4Mmw3' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 4,
@@ -68,6 +306,85 @@ const mockFeaturedEvents = [
       { icon: 'twitter', url: 'https://x.com/kendricklamar?lang=es' },
       { icon: 'instagram', url: 'https://www.instagram.com/kendricklamar?igsh=MXdjMXd3MHp1bjExbg==' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
 ];
 const mockUpcomingEvents = [
@@ -85,6 +402,85 @@ const mockUpcomingEvents = [
       { icon: 'twitter', url: 'https://x.com/frankoccean?lang=es' },
       { icon: 'instagram', url: 'https://www.instagram.com/blonded?igsh=MWRtanZpamZkdGVvMA==' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 6,
@@ -100,6 +496,85 @@ const mockUpcomingEvents = [
       { icon: 'twitter', url: 'https://x.com/lmxlm?lang=es' },
       { icon: 'instagram', url: 'https://www.instagram.com/luismiguel?igsh=MWVjcHdhcjl6azltdA==' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 7,
@@ -115,6 +590,85 @@ const mockUpcomingEvents = [
       { icon: 'twitter', url: 'https://x.com/trvisXX' },
       { icon: 'instagram', url: 'https://www.instagram.com/travisscott?igsh=MWQxZnlqZmQ3dnNjeQ==' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 8,
@@ -130,6 +684,85 @@ const mockUpcomingEvents = [
       { icon: 'twitter', url: 'https://x.com/rsprachrohr' },
       { icon: 'instagram', url: 'https://www.instagram.com/rammsteinofficial?igsh=YTZmM3RscXo0c3dq' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   },
   {
     id: 9,
@@ -145,6 +778,85 @@ const mockUpcomingEvents = [
       { icon: 'twitter', url: 'https://x.com/tylerthecreator' },
       { icon: 'instagram', url: 'https://www.instagram.com/feliciathegoat?igsh=b28zMnRuZnE0NzE3' },
     ],
+    sections: [
+      {
+        name: 'Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Alta',
+        price: 700,
+        seats: [
+          [{ id: 'TA1', status: 'available' }, { id: 'TA2', status: 'occupied' }],
+          [{ id: 'TA3', status: 'available' }, { id: 'TA4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Tlaxcala Baja',
+        price: 600,
+        seats: [
+          [{ id: 'TB1', status: 'available' }, { id: 'TB2', status: 'occupied' }],
+          [{ id: 'TB3', status: 'available' }, { id: 'TB4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Oriente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Centro Poniente',
+        price: 500,
+        seats: [
+          [{ id: 'P1', status: 'available' }, { id: 'P2', status: 'occupied' }],
+          [{ id: 'P3', status: 'available' }, { id: 'P4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Sur',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Baja Central',
+        price: 300,
+        seats: [
+          [{ id: 'PS1', status: 'available' }, { id: 'PS2', status: 'occupied' }],
+          [{ id: 'PS3', status: 'available' }, { id: 'PS4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Pronto Norte',
+        price: 300,
+        seats: [
+          [{ id: 'PN1', status: 'available' }, { id: 'PN2', status: 'occupied' }],
+          [{ id: 'PN3', status: 'available' }, { id: 'PN4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Oriente',
+        price: 600,
+        seats: [
+          [{ id: 'O1', status: 'available' }, { id: 'O2', status: 'occupied' }],
+          [{ id: 'O3', status: 'available' }, { id: 'O4', status: 'available' }],
+        ],
+      },
+      {
+        name: 'Campo',
+        price: 0, // Campo decorativo
+        seats: [],
+      },
+    ]
   }, 
 ];
 
@@ -214,7 +926,12 @@ function App() {
                           path="/event/:id"
                           element={<EventDetails events={[...mockFeaturedEvents, ...mockUpcomingEvents]} />}
                       />
-                      <Route path="/buy-tickets/:id" element={<BuyTickets />} />
+                      {/* Selección de asientos */}
+                    <Route
+                      path="/buy-tickets/:id"
+                      element={<SeatSelection events={[...mockFeaturedEvents, ...mockUpcomingEvents]} />}
+                    />
+                    <Route path="/purchase-tickets" element={<PurchaseTickets />} />
                   </Routes>
               </div>
               <Footer />

@@ -90,7 +90,7 @@ function EventDetails({ events }) {
                         </button>
                     </div>
                     <div className="event-details-buy-ticket">
-                        <button className="buy-ticket" onClick={() => navigate(`/buy/${event.id}`)}>
+                        <button className="buy-ticket" onClick={() => navigate(`/buy-tickets/${event.id}`)}>
                             Comprar boletos
                         </button>
                     </div>
