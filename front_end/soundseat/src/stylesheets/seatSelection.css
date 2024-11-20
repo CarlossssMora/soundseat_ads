@@ -152,12 +152,12 @@
   
   /* Contenedor del mapa de asientos */
   .seats-container {
-    margin: 20px auto;
+    margin: 20px 0;
     padding: 20px;
     border-radius: 15px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
+    max-width: 1000px;
     text-align: center;
   }
   
@@ -192,7 +192,7 @@
 /* Contenedor de la cuadrícula de asientos */
 .seats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ajusta los asientos automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Ajusta los asientos automáticamente */
     gap: 10px;
     justify-content: center;
     margin: 20px auto;
@@ -201,8 +201,8 @@
   
   /* Estilo general para cada asiento */
   .seat {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -419,7 +419,7 @@ header {
   
   /* Estilo para el texto y el input */
   header label {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 500;
     margin-right: 10px;
     color: #1e3a8a; /* Azul oscuro */
@@ -431,7 +431,7 @@ header {
     border: 2px solid #1e3a8a; /* Azul oscuro */
     border-radius: 5px;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.8em;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
