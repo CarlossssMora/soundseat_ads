@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../stylesheets/featuredEvent.css';
 import EventCard from './eventCard'; // Importar EventCard
+import axios from 'axios'; // Cliente HTTP para llamar al backend
 
-function FeaturedEvent({ events, isSearchMode = false }) {
+function FeaturedEvent({ isSearchMode = false }) {
+  const [events, setEvents] = useState([]); // Estado para los eventos
+  const [loading, setLoading] = useState(true); // Estado de carga
+  const [error, setError] = useState(null); // Estado de error
+
+  // Configuración del carrusel (react-slick)
   const settings = {
     dots: true,
     infinite: true,
@@ -16,8 +22,34 @@ function FeaturedEvent({ events, isSearchMode = false }) {
     autoplaySpeed: 3000,
   };
 
+  // Obtener eventos desde el backend
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/events'); // Llama al endpoint del backend
+        setEvents(response.data); // Guarda los datos en el estado
+        setLoading(false); // Termina la carga
+      } catch (err) {
+        setError('No se pudieron cargar los eventos.');
+        setLoading(false); // Termina la carga
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // Si está cargando, mostrar un spinner o texto de carga
+  if (loading) {
+    return <div className="loading">Cargando eventos destacados...</div>;
+  }
+
+  // Si hay un error, mostrar el mensaje de error
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
+
+  // Función para redirigir a los detalles del evento
   const goToDetails = (id) => {
-    // Redirigir dinámicamente a la página de detalles usando el ID del evento
     window.location.href = `/event/${id}`;
   };
 
@@ -41,7 +73,7 @@ function FeaturedEvent({ events, isSearchMode = false }) {
             <div
               className="featured-event"
               style={{
-                backgroundImage: `url(${event.image})`, // Usa la ruta relativa desde la carpeta public
+                backgroundImage: `url(${event.image})`, // Usa la URL completa proporcionada por el backend
                 height: '400px',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',

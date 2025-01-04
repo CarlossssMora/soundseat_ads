@@ -1,21 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../stylesheets/eventCard.css';
+import axios from 'axios';
 
-function EventCard({ event }) {
+function EventCard({ eventId }) {
+    const [event, setEvent] = useState(null); // Estado para almacenar los datos del evento
     const [likes, setLikes] = useState(0); // Estado para contar los likes
 
+    useEffect(() => {
+        const fetchEvent = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/events/${eventId}`);
+                setEvent(response.data); // Guardar los datos del evento
+                const savedLikes = localStorage.getItem(`likes-${eventId}`);
+                setLikes(savedLikes ? parseInt(savedLikes, 10) : 0); // Recuperar likes desde localStorage
+            } catch (error) {
+                console.error('Error al cargar los datos del evento:', error);
+            }
+        };
+
+        fetchEvent();
+    }, [eventId]);
+
     const handleLike = () => {
-        setLikes(likes + 1); // Incrementar los likes al hacer clic
+        const newLikes = likes + 1;
+        setLikes(newLikes); // Incrementar los likes
+        localStorage.setItem(`likes-${eventId}`, newLikes); // Guardar los likes en localStorage
     };
 
     const goToDetails = () => {
         // Redirigir dinámicamente a la página de detalles usando el ID del evento
-        window.location.href = `/event/${event.id}`;
+        window.location.href = `/event/${eventId}`;
     };
+
+    if (!event) {
+        return <div className="loading">Cargando evento...</div>;
+    }
 
     return (
         <div className="event-card">
-            <img src={event.image} alt={event.title} className="event-image" />
+            <img
+                src={event.image || '/images/default-image.jpg'} // Imagen del evento
+                alt={event.title}
+                className="event-image"
+            />
             <div className="event-details">
                 <h3 className="event-title">{event.title}</h3>
                 <p className="event-description">{event.description}</p>

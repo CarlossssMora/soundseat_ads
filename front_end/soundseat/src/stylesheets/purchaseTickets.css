@@ -1,0 +1,57 @@
+.purchase-tickets-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .purchase-message h1 {
+    color: #2ecc71;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .purchase-message p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .purchase-summary {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .purchase-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .purchase-summary p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .purchase-actions {
+    margin-top: 20px;
+  }
+  
+  .back-to-home {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-to-home:hover {
+    background-color: #2980b9;
+  }
+  

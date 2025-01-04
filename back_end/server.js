@@ -1,18 +1,18 @@
-// server.js
-require('dotenv').config();
-const express = require("express");
-const { db } = require("./firebase"); // Importa tu configuración de Firebase
-const app = express();
-const PORT = process.env.PORT || 5000;
+const express = require('express');
+const cors = require('cors');
+const eventsRoutes = require('./routes/events');
 
-app.use(express.json()); // Para procesar JSON en las solicitudes
+const app = express();
+const PORT = 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
 
 // Rutas
-app.use("/users", require("./routes/users"));
-app.use("/events", require("./routes/events"));
-app.use("/tickets", require("./routes/tickets"));
+app.use('/api/events', eventsRoutes);
 
-// Iniciar el servidor
+// Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

@@ -1,33 +1,27 @@
-// routes/users.js
 const express = require("express");
 const router = express.Router();
-const { db } = require("../firebase");
-
-// Crear un usuario
-router.post("/", async (req, res) => {
-  try {
-    const { nombre, email } = req.body;
-    const newUserRef = db.collection("Usuarios").doc();
-    await newUserRef.set({ nombre, email });
-    res.status(201).json({ id: newUserRef.id, nombre, email });
-  } catch (error) {
-    res.status(500).json({ error: "Error al crear el usuario" });
-  }
-});
+const firebase = require("../firebase");
 
 // Obtener todos los usuarios
 router.get("/", async (req, res) => {
-    try {
-      const usersSnapshot = await db.collection("Usuarios").get();
-      const users = usersSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      res.json(users);
-    } catch (error) {
-      res.status(500).json({ error: "Error al obtener usuarios" });
-    }
-  });
-  
+  try {
+    const response = await firebase.get("/users.json");
+    const users = response.data ? Object.values(response.data) : [];
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Crear un nuevo usuario
+router.post("/", async (req, res) => {
+  try {
+    const newUser = req.body;
+    await firebase.post("/users.json", newUser);
+    res.status(201).json({ message: "Usuario creado exitosamente" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;

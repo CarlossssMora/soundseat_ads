@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../stylesheets/eventDetails.css';
 
-function EventDetails({ events }) {
-    const { id } = useParams();
-    const navigate = useNavigate();
+function EventDetails() {
+    const { id } = useParams(); // Obtener el ID del evento desde la URL
+    const navigate = useNavigate(); // Navegación programática
+    const [event, setEvent] = useState(null); // Estado para almacenar los datos del evento
+    const [loading, setLoading] = useState(true); // Estado de carga
+    const [error, setError] = useState(null); // Estado de error
 
-    const event = events.find((e) => e.id === parseInt(id, 10));
+    useEffect(() => {
+        const fetchEventDetails = async () => {
+            try {
+                // Llamada al backend para obtener los detalles del evento
+                const response = await axios.get(`http://localhost:5000/api/events/${id}`);
+                setEvent(response.data); // Guardar los datos del evento
+            } catch (error) {
+                setError('No se pudo cargar la información del evento.');
+            } finally {
+                setLoading(false); // Finalizar la carga
+            }
+        };
+
+        fetchEventDetails();
+    }, [id]);
+
+    if (loading) {
+        return <div className="loading">Cargando detalles del evento...</div>;
+    }
+
+    if (error) {
+        return (
+            <div className="event-details-container">
+                <h1 className="event-details-title">Error</h1>
+                <p className="error-message">{error}</p>
+                <div className="event-details-back">
+                    <button className="back-to-home" onClick={() => navigate('/')}>
+                        Volver a la página de inicio
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     if (!event) {
         return (

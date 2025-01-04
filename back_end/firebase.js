@@ -1,11 +1,12 @@
-// firebaseConfig.js
 const admin = require("firebase-admin");
-const serviceAccount = require("./confi.json"); // Ajusta esta ruta según la ubicación de tu archivo JSON
+require("dotenv").config();
+
+const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "soundseat-eb38c.firebaseapp.com" // Reemplaza con tu databaseURL
+  databaseURL: process.env.DATABASE_URL,
 });
 
-const db = admin.firestore();
-module.exports = { admin, db };
+const firestore = admin.firestore(); // Base de datos Firestore
+module.exports = { firestore };
