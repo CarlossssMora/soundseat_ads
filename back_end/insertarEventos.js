@@ -69,7 +69,7 @@ const eventos = [
         date: "2025-05-25",
         time: "19:00",
         image: "/frank_ocean.jpg",
-        longDescription: "Frank Ocean vuelve a los escenarios con una propuesta musical única que fusiona melancolía, ritmo y poesía. Prepárate para una experiencia mágica e íntima que conectará con tus emociones más profundas.",
+        longDescription: "Frank Ocean vuelve a los escenarios con una propuesta musical única que fusiona melancolía, ritmo y poesía. Prepárate para una experiencia mágica e íntima que conectará con tus emociones más profundas, será inolbidable.",
         socialLinks: [
             { icon: "facebook", url: "https://facebook.com/frankocean" },
             { icon: "twitter", url: "https://twitter.com/frankocean" },
