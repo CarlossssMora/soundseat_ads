@@ -57,7 +57,7 @@ function FeaturedEvent({ isSearchMode = false }) {
     // Modo de búsqueda: Renderizar eventos destacados como tarjetas
     return (
       <div className="featured-event-search">
-        {events.map((event) => (
+        {events.slice(0, 4).map((event) => ( // Mostrar solo los primeros cuatro eventos
           <EventCard key={event.id} event={event} />
         ))}
       </div>
@@ -68,7 +68,7 @@ function FeaturedEvent({ isSearchMode = false }) {
   return (
     <div className="featured-event-container">
       <Slider {...settings}>
-        {events.map((event) => (
+        {events.slice(0, 4).map((event) => ( // Mostrar solo los primeros cuatro eventos
           <div key={event.id}>
             <div
               className="featured-event"

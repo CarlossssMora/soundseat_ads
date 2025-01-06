@@ -17,7 +17,7 @@ const Summary = ({ selectedSeats, total, onRemoveSeat, onClearSeats }) => {
             <li key={seat.id}>
               <span>Asiento: {seat.id}, Precio: ${seat.price}</span>
               <button
-                onClick={() => onRemoveSeat(seat)}
+                onClick={() => onRemoveSeat(seat.id)} // Pasar solo el ID del asiento
                 className="delete-button"
                 aria-label="Eliminar asiento"
               >
