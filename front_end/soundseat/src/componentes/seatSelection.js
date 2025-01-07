@@ -148,11 +148,14 @@ const SeatSelection = () => {
     setSelectedSeats(Object.values(selectedSeats).flat());
     setTotalPrice(total);
     setEventDetails({
+      id: event.id, // Asegúrate de incluir el ID del evento
       title: event.title,
       artist: event.artist,
       date: event.date,
       time: event.time,
+      sections: event.sections, // Incluye las secciones si son necesarias para los asientos
     });
+    
 
     navigate('/payment-simulation');
   };

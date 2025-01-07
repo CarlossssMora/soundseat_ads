@@ -28,10 +28,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-
-// Buscar eventos por texto// Ruta para buscar eventos por texto y/o fecha
-// Ruta de búsqueda
-// Ruta para buscar eventos por texto o fecha// Ruta para buscar eventos por texto o fecha
+// Ruta para buscar eventos por texto o fecha
 router.get('/search', async (req, res) => {
     try {
         const { text, date } = req.query;
@@ -68,5 +65,45 @@ router.get('/search', async (req, res) => {
     }
 });
 
-  
+// Actualizar el estado de los asientos
+router.post('/:id/update-seats', async (req, res) => {
+    try {
+        const { seats } = req.body; // Lista de IDs de asientos a actualizar
+        console.log('IDs de asientos a actualizar:', seats);
+
+        const eventRef = firestore.collection('eventos').doc(req.params.id);
+
+        const eventDoc = await eventRef.get();
+        if (!eventDoc.exists) {
+            return res.status(404).json({ error: 'Evento no encontrado.' });
+        }
+
+        const eventData = eventDoc.data();
+
+        // Actualizar el estado de los asientos
+        const updatedSections = eventData.sections.map((section) => {
+            console.log('Procesando sección:', section.name);
+            return {
+                ...section,
+                seats: section.seats.map((seat) => {
+                    if (seats.includes(seat.id)) {
+                        console.log(`Actualizando asiento ${seat.id} a ocupado`);
+                        return { ...seat, status: 'occupied' }; // Cambiar estado a ocupado
+                    }
+                    return seat;
+                }),
+            };
+        });
+
+        // Guardar cambios en Firestore
+        await eventRef.update({ sections: updatedSections });
+
+        res.json({ success: true, message: 'Asientos actualizados correctamente.' });
+    } catch (error) {
+        console.error('Error al actualizar los asientos:', error);
+        res.status(500).json({ error: 'Error al actualizar los asientos.' });
+    }
+});
+
+
 module.exports = router;

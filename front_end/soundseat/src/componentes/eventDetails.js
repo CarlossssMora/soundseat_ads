@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { TicketContext } from './ticketContext'; // Importar el contexto
 import '../stylesheets/eventDetails.css';
 
 function EventDetails() {
@@ -9,14 +10,24 @@ function EventDetails() {
     const [event, setEvent] = useState(null); // Estado para almacenar los datos del evento
     const [loading, setLoading] = useState(true); // Estado de carga
     const [error, setError] = useState(null); // Estado de error
+    const { setEventDetails } = useContext(TicketContext); // Acceder al contexto
 
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
                 // Llamada al backend para obtener los detalles del evento
                 const response = await axios.get(`http://localhost:5000/api/events/${id}`);
-                setEvent(response.data); // Guardar los datos del evento
+                const eventData = response.data;
+
+                // Validar que los datos contengan el campo "sections" correctamente
+                if (!eventData.sections || !eventData.sections.every(section => Array.isArray(section.seats) || section.seats.length >= 0)) {
+                    throw new Error('La estructura de los datos del evento es incorrecta.');
+                }
+
+                setEvent(eventData); // Guardar los datos del evento
+                setEventDetails(eventData); // Sincronizar con el contexto, incluyendo el campo "sections"
             } catch (error) {
+                console.error('Error al cargar los detalles del evento:', error);
                 setError('No se pudo cargar la información del evento.');
             } finally {
                 setLoading(false); // Finalizar la carga
@@ -24,7 +35,7 @@ function EventDetails() {
         };
 
         fetchEventDetails();
-    }, [id]);
+    }, [id, setEventDetails]);
 
     if (loading) {
         return <div className="loading">Cargando detalles del evento...</div>;
@@ -36,9 +47,7 @@ function EventDetails() {
                 <h1 className="event-details-title">Error</h1>
                 <p className="error-message">{error}</p>
                 <div className="event-details-back">
-                    <button className="back-to-home" onClick={() => navigate('/')}>
-                        Volver a la página de inicio
-                    </button>
+                    <button className="back-to-home" onClick={() => navigate('/')}>Volver a la página de inicio</button>
                 </div>
             </div>
         );
@@ -49,9 +58,7 @@ function EventDetails() {
             <div className="event-details-container">
                 <h1 className="event-details-title">Evento no encontrado</h1>
                 <div className="event-details-back">
-                    <button className="back-to-home" onClick={() => navigate('/')}>
-                        Volver a la página de inicio
-                    </button>
+                    <button className="back-to-home" onClick={() => navigate('/')}>Volver a la página de inicio</button>
                 </div>
             </div>
         );
@@ -121,14 +128,10 @@ function EventDetails() {
 
                 <div className="event-details-buttons">
                     <div className="event-details-back">
-                        <button className="back-to-home" onClick={() => navigate('/')}>
-                            Volver a la página de inicio
-                        </button>
+                        <button className="back-to-home" onClick={() => navigate('/')}>Volver a la página de inicio</button>
                     </div>
                     <div className="event-details-buy-ticket">
-                        <button className="buy-ticket" onClick={() => navigate(`/buy-tickets/${event.id}`)}>
-                            Comprar boletos
-                        </button>
+                        <button className="buy-ticket" onClick={() => navigate(`/buy-tickets/${event.id}`)}>Comprar boletos</button>
                     </div>
                 </div>
             </div>

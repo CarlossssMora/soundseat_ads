@@ -7,8 +7,14 @@ const Summary = ({ selectedSeats, total, onRemoveSeat, onClearSeats, event }) =>
   const { setSelectedSeats, setTotalPrice, setEventDetails } = useContext(TicketContext); // Acceder al contexto
 
   const handlePurchase = () => {
-    if (!event) {
-      alert('No se pudo obtener la información del evento.');
+    if (!event || !event.title || !event.artist) {
+      alert('No se pudo obtener la información completa del evento.');
+      console.error('Detalles del evento incompletos:', event);
+      return;
+    }
+
+    if (selectedSeats.length === 0) {
+      alert('No has seleccionado ningún asiento.');
       return;
     }
 
@@ -16,10 +22,12 @@ const Summary = ({ selectedSeats, total, onRemoveSeat, onClearSeats, event }) =>
     setSelectedSeats(selectedSeats);
     setTotalPrice(total);
     setEventDetails({
+      id: event.id || 'ID no disponible',
       title: event.title || 'Evento no disponible',
       artist: event.artist || 'Artista no disponible',
       date: event.date || 'Fecha no disponible',
       time: event.time || 'Hora no disponible',
+      sections: event.sections || [],
     });
 
     // Redirigir a la simulación de pago
@@ -27,12 +35,12 @@ const Summary = ({ selectedSeats, total, onRemoveSeat, onClearSeats, event }) =>
   };
 
   return (
-    <div>
+    <div className="summary-container">
       <h3>Resumen de Asientos</h3>
       {selectedSeats.length > 0 ? (
         <ul>
           {selectedSeats.map((seat) => (
-            <li key={seat.id}>
+            <li key={seat.id} className="seat-item">
               <span>
                 Asiento: {seat.id}, Sección: {seat.sectionName}, Precio: ${seat.price}
               </span>

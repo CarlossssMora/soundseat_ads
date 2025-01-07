@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TicketContext } from './ticketContext';
-import '../stylesheets/simulacionPago.css'; 
+import axios from 'axios';
+import '../stylesheets/simulacionPago.css';
 
 const PaymentSimulation = () => {
   const { selectedSeats, totalPrice, eventDetails } = useContext(TicketContext);
@@ -16,7 +17,7 @@ const PaymentSimulation = () => {
   const [error, setError] = useState('');
 
   // Validación y manejo de confirmación de pago
-  const handlePayment = () => {
+  const handlePayment = async () => {
     setError('');
 
     // Validar número de tarjeta (16 dígitos)
@@ -49,8 +50,33 @@ const PaymentSimulation = () => {
       return;
     }
 
-    alert('Pago realizado con éxito');
-    navigate('/purchase-tickets'); // Redirige a la página de confirmación de compra
+    // Validar que existan datos de asientos y del evento
+    if (!selectedSeats || selectedSeats.length === 0) {
+      setError('No has seleccionado ningún asiento.');
+      return;
+    }
+
+    if (!eventDetails || !eventDetails.id) {
+      setError('No se encontraron los detalles del evento. Por favor, vuelve a intentar.');
+      return;
+    }
+
+    try {
+      // Llamar a la API para actualizar los asientos
+      console.log('Enviando datos al servidor:', {
+        seats: selectedSeats.map((seat) => seat.id),
+      });
+
+      await axios.post(`http://localhost:5000/api/events/${eventDetails.id}/update-seats`, {
+        seats: selectedSeats.map((seat) => seat.id), // Enviar solo los IDs de los asientos
+      });
+
+      alert('Pago realizado con éxito');
+      navigate('/purchase-tickets'); // Redirige a la página de confirmación de compra
+    } catch (error) {
+      console.error('Error al actualizar los asientos:', error);
+      setError('Ocurrió un error al procesar el pago. Por favor, inténtalo de nuevo.');
+    }
   };
 
   return (
