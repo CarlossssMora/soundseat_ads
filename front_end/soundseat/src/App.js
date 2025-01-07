@@ -8,6 +8,8 @@ import UpcomingEvents from './componentes/upcomingEvents';
 import EventDetails from './componentes/eventDetails';
 import SeatSelection from './componentes/seatSelection';
 import PurchaseTickets from './componentes/purchaseTickets';
+import PaymentSimulation from './componentes/simulacionPago'; // Simulación de pago
+import { TicketProvider } from './componentes/ticketContext'; // Contexto global
 
 // EVENTOS DESTACADOS Y PRÓXIMOS (Mock Data)
 const mockFeaturedEvents = [
@@ -766,84 +768,102 @@ const mockUpcomingEvents = [
   }, 
 ];
 
+
+
 function App() {
   const [searchQuery, setSearchQuery] = useState(''); // Estado para búsqueda por texto
   const [selectedDate, setSelectedDate] = useState(null); // Estado para búsqueda por fecha
 
   // Función para convertir un objeto Date a formato dd/MM/yyyy
   const formatDate = (date) => {
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   };
 
   // Filtrar eventos destacados
   const filteredFeaturedEvents = mockFeaturedEvents.filter((event) => {
-      const matchesTitle = searchQuery && event.title.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesArtist = searchQuery && event.artist.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesDate =
-          selectedDate &&
-          event.date === formatDate(selectedDate); // Comparar con fecha formateada
-      return matchesTitle || matchesArtist || matchesDate;
+    const matchesTitle =
+      searchQuery && event.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesArtist =
+      searchQuery && event.artist.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDate =
+      selectedDate && event.date === formatDate(selectedDate); // Comparar con fecha formateada
+    return matchesTitle || matchesArtist || matchesDate;
   });
 
   // Filtrar eventos próximos
   const filteredUpcomingEvents = mockUpcomingEvents.filter((event) => {
-      const matchesTitle = searchQuery && event.title.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesArtist = searchQuery && event.artist.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesDate =
-          selectedDate &&
-          event.date === formatDate(selectedDate); // Comparar con fecha formateada
-      return matchesTitle || matchesArtist || matchesDate;
+    const matchesTitle =
+      searchQuery && event.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesArtist =
+      searchQuery && event.artist.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDate =
+      selectedDate && event.date === formatDate(selectedDate); // Comparar con fecha formateada
+    return matchesTitle || matchesArtist || matchesDate;
   });
 
   return (
+    <TicketProvider>
       <Router>
-          <div className="App">
-              {/* Pasar estados y funciones al Nav */}
-              <Nav
-                  onSearch={({ date, text }) => {
-                      setSelectedDate(date);
-                      setSearchQuery(text);
-                  }}
-              />
-              <div className="main-content">
-                  <Routes>
-                      <Route
-                          path="/"
-                          element={
-                              <>
-                                  {/* Renderizar FeaturedEvent con o sin búsqueda */}
-                                  <FeaturedEvent
-                                      events={searchQuery || selectedDate ? filteredFeaturedEvents : mockFeaturedEvents}
-                                      isSearchMode={!!(searchQuery || selectedDate)}
-                                  />
-                                  {/* Renderizar UpcomingEvents con o sin búsqueda */}
-                                  <UpcomingEvents
-                                      events={searchQuery || selectedDate ? filteredUpcomingEvents : mockUpcomingEvents}
-                                      isSearchMode={!!(searchQuery || selectedDate)}
-                                  />
-                              </>
-                          }
-                      />
-                      {/* Otras rutas */}
-                      <Route
-                          path="/event/:id"
-                          element={<EventDetails events={[...mockFeaturedEvents, ...mockUpcomingEvents]} />}
-                      />
-                      {/* Selección de asientos */}
-                    <Route
-                      path="/buy-tickets/:id"
-                      element={<SeatSelection />}
+        <div className="App">
+          {/* Pasar estados y funciones al Nav */}
+          <Nav
+            onSearch={({ date, text }) => {
+              setSelectedDate(date);
+              setSearchQuery(text);
+            }}
+          />
+          <div className="main-content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    {/* Renderizar FeaturedEvent con o sin búsqueda */}
+                    <FeaturedEvent
+                      events={
+                        searchQuery || selectedDate
+                          ? filteredFeaturedEvents
+                          : mockFeaturedEvents
+                      }
+                      isSearchMode={!!(searchQuery || selectedDate)}
                     />
-                    <Route path="/purchase-tickets" element={<PurchaseTickets />} />
-                  </Routes>
-              </div>
-              <Footer />
+                    {/* Renderizar UpcomingEvents con o sin búsqueda */}
+                    <UpcomingEvents
+                      events={
+                        searchQuery || selectedDate
+                          ? filteredUpcomingEvents
+                          : mockUpcomingEvents
+                      }
+                      isSearchMode={!!(searchQuery || selectedDate)}
+                    />
+                  </>
+                }
+              />
+              {/* Detalles del evento */}
+              <Route
+                path="/event/:id"
+                element={<EventDetails events={[...mockFeaturedEvents, ...mockUpcomingEvents]} />}
+              />
+              {/* Selección de asientos */}
+              <Route path="/buy-tickets/:id" element={<SeatSelection />} />
+              {/* Simulación de pago */}
+              <Route
+                path="/payment-simulation"
+                element={<PaymentSimulation />}
+              />
+              {/* Confirmación de compra */}
+              <Route path="/purchase-tickets" element={<PurchaseTickets />} />
+            </Routes>
           </div>
+          <Footer />
+        </div>
       </Router>
+    </TicketProvider>
   );
 }
 
 export default App;
+

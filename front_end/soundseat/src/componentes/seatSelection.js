@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { TicketContext } from './ticketContext';
 import Section from './section';
 import SeatsGrid from './seatsGrid';
 import Summary from './summary';
-import axios from 'axios'; // Para realizar solicitudes HTTP
+import axios from 'axios';
 import '../stylesheets/seatSelection.css';
 
 const SeatSelection = () => {
-  const { id } = useParams(); // Obtener el ID del evento desde la URL
-  const [event, setEvent] = useState(null); // Estado para almacenar los datos del evento
-  const [loading, setLoading] = useState(true); // Estado de carga
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const { id } = useParams();
+  const navigate = useNavigate();
 
+  // Contexto global
+  const { setSelectedSeats, setTotalPrice, setEventDetails } = useContext(TicketContext);
+
+  // Estados locales
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
-  const [selectedSeats, setSelectedSeats] = useState({});
+  const [selectedSeats, setLocalSelectedSeats] = useState({});
   const [maxSeats, setMaxSeats] = useState(1);
 
   // Función para reestructurar los asientos en filas
@@ -35,7 +41,7 @@ const SeatSelection = () => {
         // Reestructurar los asientos para cada sección
         const restructuredSections = eventData.sections.map((section) => ({
           ...section,
-          seats: restructureSeats(section.seats, 2), // Ajusta "2" al número de asientos por fila
+          seats: restructureSeats(section.seats, 2),
         }));
 
         setEvent({ ...eventData, sections: restructuredSections });
@@ -49,6 +55,7 @@ const SeatSelection = () => {
     fetchEvent();
   }, [id]);
 
+  // Manejo de errores y estado de carga
   if (loading) {
     return <div className="loading">Cargando detalles del evento...</div>;
   }
@@ -61,11 +68,13 @@ const SeatSelection = () => {
     return <h2>Evento no encontrado</h2>;
   }
 
+  // Seleccionar sección
   const handleSectionClick = (section) => {
     if (section.name === 'Campo') return;
     setSelectedSection(section);
   };
 
+  // Seleccionar o deseleccionar asiento
   const handleSeatSelect = (seat) => {
     if (!selectedSection) {
       console.error('No hay una sección seleccionada.');
@@ -82,7 +91,7 @@ const SeatSelection = () => {
       return;
     }
 
-    setSelectedSeats((prevSeats) => {
+    setLocalSelectedSeats((prevSeats) => {
       const updatedSeats = { ...prevSeats };
       const currentSelectedSeats = prevSeats[selectedSection.name] || [];
       const alreadySelected = currentSelectedSeats.find((s) => s.id === seat.id);
@@ -102,8 +111,9 @@ const SeatSelection = () => {
     });
   };
 
+  // Eliminar un asiento seleccionado
   const handleRemoveSeat = (seatId) => {
-    setSelectedSeats((prevSeats) => {
+    setLocalSelectedSeats((prevSeats) => {
       const updatedSeats = { ...prevSeats };
 
       Object.keys(updatedSeats).forEach((sectionName) => {
@@ -122,8 +132,29 @@ const SeatSelection = () => {
     });
   };
 
+  // Eliminar todos los asientos seleccionados
   const handleClearAllSeats = () => {
-    setSelectedSeats({});
+    setLocalSelectedSeats({});
+  };
+
+  // Confirmar compra y redirigir a la simulación de pago
+  const handlePurchase = () => {
+    console.log('Evento:', event); // Verifica los datos del evento aquí
+    console.log('Asientos seleccionados:', selectedSeats);
+    const total = Object.values(selectedSeats)
+      .flat()
+      .reduce((sum, seat) => sum + seat.price, 0);
+
+    setSelectedSeats(Object.values(selectedSeats).flat());
+    setTotalPrice(total);
+    setEventDetails({
+      title: event.title,
+      artist: event.artist,
+      date: event.date,
+      time: event.time,
+    });
+
+    navigate('/payment-simulation');
   };
 
   const total = Object.values(selectedSeats)
@@ -197,6 +228,8 @@ const SeatSelection = () => {
             total={total}
             onRemoveSeat={handleRemoveSeat}
             onClearSeats={handleClearAllSeats}
+            onPurchase={handlePurchase} // Pasamos handlePurchase al componente Summary
+            event={event}
           />
         </div>
       </div>

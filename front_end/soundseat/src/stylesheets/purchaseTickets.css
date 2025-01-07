@@ -1,57 +1,140 @@
+/* Contenedor principal */
 .purchase-tickets-container {
-    text-align: center;
-    margin: 50px auto;
-    padding: 20px;
-    max-width: 600px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .purchase-message h1 {
-    color: #2ecc71;
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .purchase-message p {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  .purchase-summary {
-    margin-top: 20px;
-    text-align: left;
-  }
-  
-  .purchase-summary h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  .purchase-summary p {
-    font-size: 1rem;
-    margin: 5px 0;
-    color: #333;
-  }
-  
-  .purchase-actions {
-    margin-top: 20px;
-  }
-  
-  .back-to-home {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-to-home:hover {
-    background-color: #2980b9;
-  }
-  
+  text-align: center;
+  margin: 50px auto;
+  padding: 30px;
+  max-width: 600px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #e6e9f0); /* Fondo con gradiente suave */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+  font-family: 'Roboto', sans-serif; /* Fuente profesional */
+}
+
+/* Mensaje de éxito */
+.purchase-message h1 {
+  color: #27ae60; /* Verde profesional */
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.purchase-message p {
+  font-size: 1.3rem;
+  color: #555; /* Gris oscuro */
+  margin-bottom: 20px;
+}
+
+/* Contenedor de resumen */
+.purchase-summary {
+  margin-top: 20px;
+  text-align: left;
+  background-color: #f8f9fc; /* Fondo claro para contraste */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+.purchase-summary h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #0056d2; /* Azul profesional */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.purchase-summary p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.purchase-summary p span {
+  font-weight: bold;
+  color: #0056d2; /* Azul para destacar */
+}
+
+/* Acciones del usuario */
+.purchase-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espaciado entre botones */
+}
+
+.button {
+  background-color: #0056d2; /* Azul profesional */
+  color: white;
+  padding: 10px 20px; /* Tamaño adecuado */
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #004bb5; /* Azul más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de aumento */
+}
+
+.button:active {
+  transform: translateY(2px); /* Efecto de clic */
+}
+
+/* Separador */
+.purchase-summary hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 15px 0;
+  width: 100%;
+}
+
+/* Información resaltada */
+.purchase-summary .highlight {
+  color: #e74c3c; /* Rojo profesional */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Transición suave */
+.purchase-tickets-container,
+.purchase-summary,
+.button {
+  transition: all 0.3s ease;
+}
+
+/* Botones de acción */
+.action-button {
+  background-color: #0056d2; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.action-button:hover {
+  background-color: #0041a8; /* Azul más oscuro al pasar el cursor */
+}
+
+.action-button:active {
+  transform: scale(0.95); /* Efecto de clic */
+}
+
+/* Ajuste de espaciado entre botones */
+.purchase-actions button {
+  margin: 10px; /* Separación entre botones */
+}

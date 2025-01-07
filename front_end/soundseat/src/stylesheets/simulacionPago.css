@@ -1,0 +1,136 @@
+/* Contenedor principal de la simulación de pago */
+.payment-simulation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #ffffff, #e6e9f0); /* Fondo con gradiente claro */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra más profesional */
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif; /* Fuente moderna */
+}
+
+/* Título */
+.payment-simulation h2 {
+    color: #003a70; /* Azul oscuro */
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+/* Texto de total a pagar */
+.payment-simulation p {
+    font-size: 18px;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Lista de asientos */
+.payment-simulation ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.payment-simulation ul li {
+    background-color: #f8f9fc;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo del formulario */
+.payment-simulation form {
+    width: 100%;
+}
+
+/* Campos del formulario */
+.payment-simulation .form-group {
+    margin-bottom: 20px;
+}
+
+.payment-simulation label {
+    display: block;
+    font-size: 16px;
+    color: #003a70; /* Azul oscuro */
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.payment-simulation input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccd1d9; /* Borde claro */
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-simulation input:focus {
+    border-color: #0056d2; /* Azul al enfocarse */
+    box-shadow: 0 0 8px rgba(0, 86, 210, 0.2);
+}
+
+/* Mensajes de error */
+.payment-simulation .error-message {
+    color: #d9534f; /* Rojo profesional */
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Botón de confirmar pago */
+.payment-simulation button {
+    width: 100%;
+    background: linear-gradient(145deg, #0056d2, #003a70); /* Gradiente azul */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.payment-simulation button:hover {
+    background: linear-gradient(145deg, #003a70, #0056d2); /* Gradiente inverso al pasar */
+    transform: translateY(-2px);
+}
+
+.payment-simulation button:active {
+    transform: translateY(0); /* Efecto de "clic" */
+    background: linear-gradient(145deg, #004bb5, #003a5f); /* Gradiente más oscuro */
+}
+
+/* Mensaje de éxito opcional */
+.payment-success {
+    color: #28a745; /* Verde para éxito */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Separadores */
+.payment-simulation hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+    width: 100%;
+}
