@@ -6,8 +6,8 @@ import '../stylesheets/featuredEvent.css';
 import EventCard from './eventCard'; // Importar EventCard
 import axios from 'axios'; // Cliente HTTP para llamar al backend
 
-function FeaturedEvent({ isSearchMode = false }) {
-  const [events, setEvents] = useState([]); // Estado para los eventos
+function FeaturedEvent({ events, isSearchMode = false }) {
+  const [localEvents, setLocalEvents] = useState([]); // Cambia el nombre del estado
   const [loading, setLoading] = useState(true); // Estado de carga
   const [error, setError] = useState(null); // Estado de error
 
@@ -27,7 +27,7 @@ function FeaturedEvent({ isSearchMode = false }) {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/events'); // Llama al endpoint del backend
-        setEvents(response.data); // Guarda los datos en el estado
+        setLocalEvents(response.data); // Guarda los datos en el estado
         setLoading(false); // Termina la carga
       } catch (err) {
         setError('No se pudieron cargar los eventos.');
@@ -68,7 +68,7 @@ function FeaturedEvent({ isSearchMode = false }) {
   return (
     <div className="featured-event-container">
       <Slider {...settings}>
-        {events.slice(0, 4).map((event) => ( // Mostrar solo los primeros cuatro eventos
+        {localEvents.slice(0, 4).map((event) => ( // Mostrar solo los primeros cuatro eventos
           <div key={event.id}>
             <div
               className="featured-event"

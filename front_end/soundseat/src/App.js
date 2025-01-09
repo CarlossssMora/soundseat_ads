@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './stylesheets/App.css';
 import Nav from './componentes/nav';
@@ -10,54 +11,86 @@ import SeatSelection from './componentes/seatSelection';
 import PurchaseTickets from './componentes/purchaseTickets';
 import PaymentSimulation from './componentes/simulacionPago'; // Simulación de pago
 import { TicketProvider } from './componentes/ticketContext'; // Contexto global
-
+import EventCard from './componentes/eventCard'; // Importación del componente de tarjeta
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState(''); // Estado para búsqueda por texto
-  const [selectedDate, setSelectedDate] = useState(null); // Estado para búsqueda por fecha
+  const [allEvents, setAllEvents] = useState([]); // Todos los eventos
+  const [filteredEvents, setFilteredEvents] = useState([]); // Eventos filtrados
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
+  // Cargar todos los eventos desde la API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/events');
+        setAllEvents(response.data); // Guarda todos los eventos
+        setFilteredEvents(response.data); // Inicialmente muestra todos
+      } catch (error) {
+        console.error('Error al cargar eventos:', error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // Manejo de búsqueda
+  const handleSearch = ({ date, text }) => {
+    const filtered = allEvents.filter((event) => {
+      const matchesText =
+        text &&
+        (event.title.toLowerCase().includes(text.toLowerCase()) ||
+          event.artist.toLowerCase().includes(text.toLowerCase()));
+  
+      let matchesDate = true;
+      if (date) {
+        const [day, month, year] = date.split('-'); 
+        const inputDate = new Date(`${year}-${month}-${day}`);
+        const eventDate = new Date(event.date);
+        matchesDate = inputDate.getTime() === eventDate.getTime();
+      }
+  
+      return (!text || matchesText) && matchesDate;
+    });
+  
+    setFilteredEvents(filtered);
+    setIsSearchActive(!!text || !!date);
+  };
+  
 
   return (
     <TicketProvider>
       <Router>
         <div className="App">
-          {/* Pasar estados y funciones al Nav */}
-          <Nav
-            onSearch={({ date, text }) => {
-              setSelectedDate(date);
-              setSearchQuery(text);
-            }}
-          />
+          <Nav onSearch={handleSearch} />
           <div className="main-content">
             <Routes>
               <Route
                 path="/"
                 element={
                   <>
-                    {/* Renderizar FeaturedEvent con o sin búsqueda */}
-                    <FeaturedEvent
-                      isSearchMode={!!(searchQuery || selectedDate)}
-                    />
-                    {/* Renderizar UpcomingEvents con o sin búsqueda */}
-                    <UpcomingEvents
-                      isSearchMode={!!(searchQuery || selectedDate)}
-                    />
+                    {/* Renderizado dinámico basado en búsqueda */}
+                    {isSearchActive ? (
+                      filteredEvents.length > 0 ? (
+                        <div className="search-results">
+                          {filteredEvents.map((event) => (
+                            <EventCard key={event.id} eventId={event.id} />
+                          ))}
+                        </div>
+                      ) : (
+                        <p>No se encontraron eventos.</p>
+                      )
+                    ) : (
+                      <>
+                        <FeaturedEvent />
+                        <UpcomingEvents events={allEvents} />
+                      </>
+                    )}
                   </>
                 }
               />
-              {/* Detalles del evento */}
-              <Route
-                path="/event/:id"
-                element={<EventDetails/>}
-              />
-              {/* Selección de asientos */}
+              <Route path="/event/:id" element={<EventDetails />} />
               <Route path="/buy-tickets/:id" element={<SeatSelection />} />
-              {/* Simulación de pago */}
-              <Route
-                path="/payment-simulation"
-                element={<PaymentSimulation />}
-              />
-              {/* Confirmación de compra */}
+              <Route path="/payment-simulation" element={<PaymentSimulation />} />
               <Route path="/purchase-tickets" element={<PurchaseTickets />} />
             </Routes>
           </div>
@@ -69,4 +102,3 @@ function App() {
 }
 
 export default App;
-
